@@ -1,0 +1,74 @@
+Create a RESPONSIVE html page
+-need an area to display counter
+<h2><span id="counter"></span>seconds left</h2>
+
+-creat div to hold all of the ul with li
+
+
+html page will need to hold all questions and various
+questions will be hidden using css class. display = none
+-test game with only 1 question first 
+-create questions with ul and li 
+- give each li an ID to select which one is correct 
+-use event delegation to select the correct li answer using its ID 
+
+ulElement.addeventlistener("click", function())
+
+if(event.target.matches(".correct of li)){
+    alert("Correct!")
+    
+    call nextQuestion(); this will use setattrivute("data-) to chose next UL to show new question
+} else {
+    alert("incorrect);
+    call deductTime()
+}
+
+//this is what happens when answer is correct
+function nextQuestion (){
+divElement.setAttribute(data- show)
+
+}
+
+function deductTime(){
+ var currentTime = 30
+ var deductTime = currentTime - 5;
+ //this will update timer when guess is wrong
+document.querySelector("#counter).textContent = deductTime
+}
+
+create a start button. add "click" addeventlistener to start
+the timer when button is clicked.
+-use setinterval() to set up timer.
+var timerInterval = setInterval(function () {
+    // each interval we....
+
+    // decrement time remaining
+    secondsLeft--;
+
+    // update the count down
+    timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
+
+    // check if time has run out
+    if (secondsLeft === 0) {
+      // stop the interval by passing the identifier returned by setInterval to
+      // the clearInterval method.
+      clearInterval(timerInterval);
+      showColorExplosion();
+    }
+  }, 1000);
+
+-create function to update the counter and display it
+
+if incorrect answer is picked time is subtracted from the timer
+
+when timer=0 game is over
+
+when game is over you save intials and score.
+save using localstorage so you can view old scores 
+-localstorage.setItem("Key", JSON.stringify(value);
+-var retrieve = localstorage.getItem("Key')
+retieve = JSON.parse(retrive);
+
+
+
+

@@ -60,3 +60,14 @@ function setTime() {
     }
   }, 1000);
 }
+
+//starts the game
+startBtn.addEventListener("click", startQuiz);
+
+function startQuiz() {
+  start.style.display = "none";
+  quiz.style.display = "block";
+  renderQuestion();
+  setTime();
+  renderLastRegistered();
+}

@@ -16,7 +16,7 @@ var userScore = document.querySelector("#user-score");
 var secondsLeft = 30;
 var score = 0;
 
-//all questions are stored in this array
+//all questions are stored in this array as objects
 var multipleChoice = [
   {
     question: "Which of these is a Boolean?",
@@ -55,7 +55,7 @@ var multipleChoice = [
   },
 ];
 
-//these will keep track of index of array
+//these will keep track of the index of array
 var lastQuestionIndex = multipleChoice.length - 1;
 var currentQuestionIndex = 0;
 
@@ -126,6 +126,7 @@ function deductTime() {
   return secondsLeft;
 }
 
+//shows the score section after quiz is complete
 function renderScore() {
   scoreDiv.style.display = "block";
   initialsDiv.style.display = "block";
@@ -142,6 +143,7 @@ submit.addEventListener("click", function (event) {
   localStorage.setItem("score", score);
 });
 
+//saves score and initials to local storage
 function renderLastRegistered() {
   var savedInitials = localStorage.getItem("initials");
   userInitials.textContent = savedInitials;

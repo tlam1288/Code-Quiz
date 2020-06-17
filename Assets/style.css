@@ -6,3 +6,9 @@
 h1 {
   text-align: left;
 }
+
+#user-initials,
+#user-score {
+  font-size: 30px;
+  font-weight: bold;
+}

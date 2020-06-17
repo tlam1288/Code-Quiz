@@ -3,7 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Assets/style.css" />
     <title>Code Quiz</title>
   </head>
-  <body></body>
+  <body>
+    <div id="container" class="quiz-body">
+      <div id="quiz" style="display: none;">
+        <h1><div id="question"></div></h1>
+
+        <ul>
+          <div id="choices">
+            <li>
+              <button type="button" class="btn btn-primary mb-1 correct">
+                <div class="choice" id="A" onclick="checkAnswer('A')"></div>
+              </button>
+            </li>
+
+            <li>
+              <button type="button" class="btn btn-primary mb-1 correct">
+                <div class="choice" id="B" onclick="checkAnswer('B')"></div>
+              </button>
+            </li>
+
+            <li>
+              <button type="button" class="btn btn-primary mb-1 correct">
+                <div class="choice" id="C" onclick="checkAnswer('C')"></div>
+              </button>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <script src="Assets/script1.js"></script>
+  </body>
 </html>

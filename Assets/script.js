@@ -71,3 +71,40 @@ function startQuiz() {
   setTime();
   renderLastRegistered();
 }
+
+//checks answer
+function checkAnswer(answer) {
+  if (answer === multipleChoice[currentQuestionIndex].correct) {
+    score++;
+    //display correct message
+    message.textContent = "Correct!";
+    message.style.color = "Green";
+  } else {
+    score--;
+    message.textContent = "Incorrect!";
+    message.style.color = "Red";
+    //deduct time fuction here and display wrong messaage
+    deductTime();
+  }
+
+  //checks to see if there is a next question
+  if (currentQuestionIndex < lastQuestionIndex) {
+    currentQuestionIndex++;
+    renderQuestion();
+  } else {
+    renderScore();
+  }
+}
+
+//deduct time when incorrect is chosen
+function deductTime() {
+  secondsLeft = secondsLeft - 5;
+  return secondsLeft;
+}
+
+function renderScore() {
+  scoreDiv.style.display = "block";
+  initialsDiv.style.display = "block";
+  quiz.style.display = "none";
+  scoreDiv.textContent = "Your score is " + score;
+}

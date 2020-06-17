@@ -1,3 +1,5 @@
+var start = document.querySelector("#start");
+var startBtn = document.querySelector("#start-btn");
 var quiz = document.querySelector("#quiz");
 var question = document.querySelector("#question");
 var answerA = document.querySelector("#A");
@@ -5,17 +7,11 @@ var answerB = document.querySelector("#B");
 var answerC = document.querySelector("#C");
 var scoreDiv = document.querySelector("#scoreCount");
 var timerDiv = document.querySelector("#timer");
-
-//all questions are stored in this array
-var multipleChoice = [
-  {
-    question: "Which of these is a Boolean?",
-    answerA: "False",
-    answerB: "56",
-    answerC: "Undefined",
-    correct: "A",
-  },
-];
+var messageDiv = document.querySelector("#message");
+var initialsDiv = document.querySelector("#initials");
+var submit = document.querySelector("#submitBtn");
+var userInitials = document.querySelector("#user-initials");
+var userScore = document.querySelector("#user-score");
 
 var secondsLeft = 30;
 var score = 0;
@@ -29,11 +25,50 @@ var multipleChoice = [
     answerC: "Undefined",
     correct: "A",
   },
+  {
+    question: "Which of these is an array?",
+    answerA: "var number = 123;",
+    answerB: "var number = [1, 2, 3];",
+    answerC: "function();",
+    correct: "B",
+  },
+  {
+    question: "How long is the string 'Hello'?",
+    answerA: "7",
+    answerB: "6",
+    answerC: "5",
+    correct: "C",
+  },
+  {
+    question: "How do you declare a variable?",
+    answerA: "event",
+    answerB: "var",
+    answerC: "for",
+    correct: "B",
+  },
+  {
+    question: "How do you increment?",
+    answerA: "i++",
+    answerB: "i==",
+    answerC: "i--",
+    correct: "A",
+  },
 ];
 
 //these will keep track of index of array
 var lastQuestionIndex = multipleChoice.length - 1;
 var currentQuestionIndex = 0;
+
+//starts the game
+startBtn.addEventListener("click", startQuiz);
+
+function startQuiz() {
+  start.style.display = "none";
+  quiz.style.display = "block";
+  renderQuestion();
+  setTime();
+  renderLastRegistered();
+}
 
 //renders the question to the page
 function renderQuestion() {
@@ -59,17 +94,6 @@ function setTime() {
       renderScore();
     }
   }, 1000);
-}
-
-//starts the game
-startBtn.addEventListener("click", startQuiz);
-
-function startQuiz() {
-  start.style.display = "none";
-  quiz.style.display = "block";
-  renderQuestion();
-  setTime();
-  renderLastRegistered();
 }
 
 //checks answer
@@ -107,4 +131,21 @@ function renderScore() {
   initialsDiv.style.display = "block";
   quiz.style.display = "none";
   scoreDiv.textContent = "Your score is " + score;
+}
+
+//saves score and initials in local storage
+submit.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  var initials = document.querySelector("#name").value;
+  localStorage.setItem("initials", initials);
+  localStorage.setItem("score", score);
+});
+
+function renderLastRegistered() {
+  var savedInitials = localStorage.getItem("initials");
+  userInitials.textContent = savedInitials;
+
+  var savedScore = localStorage.getItem("score");
+  userScore.textContent = savedScore;
 }
